@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { getCuratedPhotos } from "../utils/Api";
 import styled from "styled-components";
 import Photo from "./Photo";
+import { useSelector } from "react-redux";
 
 const ListWrap = styled.div`
   width: 70%;
@@ -30,6 +31,7 @@ const Img = styled.img`
 
 const PhotoList = () => {
   const [photos, setPhotos] = useState([]);
+  const search = useSelector((state) => state.search);
 
   useEffect(() => {
     const data = async () => {
@@ -39,6 +41,10 @@ const PhotoList = () => {
 
     data();
   }, []);
+
+  useEffect(() => {
+    setPhotos(search);
+  }, [search]);
 
   return (
     <ListWrap>

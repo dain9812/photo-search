@@ -16,3 +16,17 @@ export const getCuratedPhotos = async (page, perPage) => {
   const data = await response.data;
   return data.photos;
 };
+
+// GET https://api.pexels.com/v1/search/?page=2&per_page=1&query=nature
+export const getSearchPhotos = async (page, perPage, query) => {
+  const response = await axios.get(
+    `${BASE_URL}search?page=${page}&per_page=${perPage}&query=${query}`,
+    {
+      headers: {
+        Authorization: API_KEY,
+      },
+    }
+  );
+  const data = await response.data;
+  return data.photos;
+};
