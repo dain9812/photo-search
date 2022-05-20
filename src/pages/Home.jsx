@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Header from "../components/Header";
-import PhotoList from "../components/PhotoList";
+import ListWrap from "../components/ListWrap";
 
 const Container = styled.div``;
 
@@ -8,7 +8,7 @@ const Home = () => {
   return (
     <Container>
       <Header />
-      <PhotoList />
+      <ListWrap />
     </Container>
   );
 };

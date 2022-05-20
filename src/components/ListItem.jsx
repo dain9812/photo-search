@@ -13,11 +13,11 @@ const Img = styled.img`
   width: 100%;
 `;
 
-const Photo = ({ src, alt }) => {
+const ListItem = ({ src, alt }) => {
   return (
     <Li>
       <Img src={src.portrait} alt={alt} />
     </Li>
   );
 };
-export default Photo;
+export default ListItem;

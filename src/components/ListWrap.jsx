@@ -2,10 +2,10 @@ import { useState } from "react";
 import { useEffect } from "react";
 import { getCuratedPhotos } from "../utils/Api";
 import styled from "styled-components";
-import Photo from "./Photo";
+import ListItem from "./ListItem";
 import { useSelector } from "react-redux";
 
-const ListWrap = styled.div`
+const Wrap = styled.div`
   width: 70%;
   max-width: 1200px;
   margin: 0 auto;
@@ -29,7 +29,7 @@ const Img = styled.img`
   width: 100%;
 `;
 
-const PhotoList = () => {
+const ListWrap = () => {
   const [photos, setPhotos] = useState([]);
   const search = useSelector((state) => state.search);
 
@@ -47,17 +47,17 @@ const PhotoList = () => {
   }, [search]);
 
   return (
-    <ListWrap>
+    <Wrap>
       <Ul>
         {photos.map((photo) => (
-          <Photo key={photo.alt} {...photo} />
+          <ListItem key={photo.alt} {...photo} />
         ))}
       </Ul>
       <Pexels href="https://www.pexels.com">
         <Img src="https://images.pexels.com/lib/api/pexels.png" />
       </Pexels>
-    </ListWrap>
+    </Wrap>
   );
 };
 
-export default PhotoList;
+export default ListWrap;
