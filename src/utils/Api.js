@@ -30,3 +30,14 @@ export const getSearchPhotos = async (page, perPage, query) => {
   const data = await response.data;
   return data.photos;
 };
+
+// GET https://api.pexels.com/v1/photos/:id
+export const getPhotoById = async (id) => {
+  const response = await axios.get(`${BASE_URL}photos/${id}`, {
+    headers: {
+      Authorization: API_KEY,
+    },
+  });
+  const data = await response.data;
+  return data;
+};

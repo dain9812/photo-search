@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Li = styled.li`
   width: 31%;
@@ -13,10 +14,12 @@ const Img = styled.img`
   width: 100%;
 `;
 
-const ListItem = ({ src, alt }) => {
+const ListItem = ({ id, src, alt }) => {
   return (
     <Li>
-      <Img src={src.portrait} alt={alt} />
+      <Link to={`photo/${id}`}>
+        <Img src={src.portrait} alt={alt} />
+      </Link>
     </Li>
   );
 };

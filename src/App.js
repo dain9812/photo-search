@@ -7,7 +7,9 @@ const App = () => {
     <BrowserRouter>
       <Routes>
         <Route index element={<Home />} />
-        <Route path="photo" element={<Photo />} />
+        <Route path="photo" element={<Photo />}>
+          <Route path=":id" element={<Photo />} />
+        </Route>
       </Routes>
     </BrowserRouter>
   );
