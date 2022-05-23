@@ -10,7 +10,7 @@ const PickWrap = () => {
 
   useEffect(() => {
     dispatch(showPhoto(id));
-  }, []);
+  }, [id]);
 
   return (
     <div>

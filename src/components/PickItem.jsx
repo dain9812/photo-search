@@ -8,7 +8,7 @@ const PickItem = () => {
 
   return (
     <Container>
-      <img src={photo.src.portrait} alt={photo.alt} />
+      {photo.id ? <img src={photo.src.portrait} alt={photo.alt} /> : ""}
     </Container>
   );
 };
