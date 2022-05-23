@@ -4,6 +4,7 @@ import { getCuratedPhotos } from "../utils/Api";
 import styled from "styled-components";
 import ListItem from "./ListItem";
 import { useSelector } from "react-redux";
+import PexelsLogo from "./PexelsLogo";
 
 const Wrap = styled.div`
   width: 70%;
@@ -16,17 +17,6 @@ const Ul = styled.ul`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-`;
-
-const Pexels = styled.a`
-  display: block;
-  padding: 30px 0;
-  width: 150px;
-  margin: 0 auto;
-`;
-
-const Img = styled.img`
-  width: 100%;
 `;
 
 const ListWrap = () => {
@@ -53,9 +43,7 @@ const ListWrap = () => {
           <ListItem key={photo.alt} {...photo} />
         ))}
       </Ul>
-      <Pexels href="https://www.pexels.com">
-        <Img src="https://images.pexels.com/lib/api/pexels.png" />
-      </Pexels>
+      <PexelsLogo />
     </Wrap>
   );
 };
