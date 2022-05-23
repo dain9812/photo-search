@@ -12,11 +12,11 @@ const SearchBox = styled.div`
 const Input = styled.input`
   display: block;
   width: 100%;
-  padding: 10px 20px;
+  padding: 15px 20px;
   font-size: 18px;
   box-sizing: border-box;
-  border: 1px solid #ccc
-  border-radius: 20px;
+  border: 1px solid #ccc;
+  border-radius: 32px;
 `;
 
 const Button = styled.button`
