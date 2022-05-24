@@ -31,7 +31,7 @@ const Shadow = styled.div`
 const ListItem = ({ id, src, alt }) => {
   return (
     <Li>
-      <Link to={`photo/${id}`}>
+      <Link to={`/photo/${id}`}>
         <Img src={src.portrait} alt={alt} />
         <Shadow />
       </Link>

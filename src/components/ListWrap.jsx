@@ -20,28 +20,31 @@ const Ul = styled.ul`
 `;
 
 const ListWrap = () => {
-  const [photos, setPhotos] = useState([]);
+  const [curatedPhotos, setCuratedPhotos] = useState([]);
+  const [searchPhotos, setSearchPhotos] = useState([]);
   const search = useSelector((state) => state.search);
 
   useEffect(() => {
     const data = async () => {
-      const curatedPhotos = await getCuratedPhotos(1, 6);
-      setPhotos(curatedPhotos);
+      const photos = await getCuratedPhotos(1, 6);
+      setCuratedPhotos(photos);
     };
 
     data();
   }, []);
 
   useEffect(() => {
-    setPhotos(search);
+    setSearchPhotos(search);
   }, [search]);
 
   return (
     <Wrap>
       <Ul>
-        {photos.map((photo) => (
-          <ListItem key={photo.alt} {...photo} />
-        ))}
+        {search.length > 0
+          ? searchPhotos.map((photo) => <ListItem key={photo.alt} {...photo} />)
+          : curatedPhotos.map((photo) => (
+              <ListItem key={photo.id} {...photo} />
+            ))}
       </Ul>
       <PexelsLogo />
     </Wrap>

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 import SearchInput from "./SearchInput";
 
@@ -13,16 +14,23 @@ const Inner = styled.div`
 `;
 
 const Title = styled.h1`
+  display: inline-block;
   font-size: 45px;
   padding-bottom: 20px;
-  color: #fff;
+  cursor: pointer;
+  > a {
+    text-decoration: none;
+    color: #fff;
+  }
 `;
 
 const Header = () => {
   return (
     <Container>
       <Inner>
-        <Title>Photo Search</Title>
+        <Title>
+          <Link to="/">Photo Search</Link>
+        </Title>
         <SearchInput />
       </Inner>
     </Container>
