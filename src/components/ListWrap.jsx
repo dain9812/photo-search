@@ -1,10 +1,10 @@
 import { useState } from "react";
 import { useEffect } from "react";
-import { getCuratedPhotos } from "../utils/Api";
 import styled from "styled-components";
 import ListItem from "./ListItem";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PexelsLogo from "./PexelsLogo";
+import { curatedPhoto } from "../redux/reducer/curated";
 
 const Wrap = styled.div`
   width: 70%;
@@ -22,16 +22,14 @@ const Ul = styled.ul`
 const ListWrap = () => {
   const [curatedPhotos, setCuratedPhotos] = useState([]);
   const [searchPhotos, setSearchPhotos] = useState([]);
+  const dispatch = useDispatch();
+  const curated = useSelector((state) => state.curated);
   const search = useSelector((state) => state.search);
 
   useEffect(() => {
-    const data = async () => {
-      const photos = await getCuratedPhotos(1, 6);
-      setCuratedPhotos(photos);
-    };
-
-    data();
-  }, []);
+    dispatch(curatedPhoto());
+    setCuratedPhotos(curated);
+  }, [curated]);
 
   useEffect(() => {
     setSearchPhotos(search);
