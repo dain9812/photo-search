@@ -5,12 +5,14 @@ import { useParams } from "react-router";
 import { showPhoto } from "../redux/reducer/show";
 import styled from "styled-components";
 import PexelsLogo from "./PexelsLogo";
+import GoBack from "./GoBack";
 
 const Container = styled.div`
   width: 70%;
   max-width: 1200px;
   margin: 0 auto;
   padding: 40px 0;
+  position: relative;
 `;
 
 const PickWrap = () => {
@@ -23,6 +25,7 @@ const PickWrap = () => {
 
   return (
     <Container>
+      <GoBack />
       <PickItem />
       <PexelsLogo />
     </Container>
