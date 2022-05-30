@@ -28,7 +28,7 @@ export const getSearchPhotos = async (page, perPage, query) => {
     }
   );
   const data = await response.data;
-  return data.photos;
+  return [data.photos, data.prev_page, data.next_page];
 };
 
 // GET https://api.pexels.com/v1/photos/:id

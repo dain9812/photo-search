@@ -1,8 +1,6 @@
 import styled from "styled-components";
 import { IoIosSearch } from "react-icons/io";
 import { useState } from "react";
-import { useDispatch } from "react-redux";
-import { searchPhoto } from "../redux/reducer/search";
 import { useNavigate } from "react-router-dom";
 
 const SearchBox = styled.div`
@@ -35,7 +33,6 @@ const Button = styled.button`
 
 const SearchInput = () => {
   const [query, setQuery] = useState("");
-  const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const onChange = (e) => {
@@ -44,7 +41,6 @@ const SearchInput = () => {
 
   const onClick = (e) => {
     if (query !== "") {
-      dispatch(searchPhoto(query));
       setQuery("");
       navigate(`/search/${query}`);
     }

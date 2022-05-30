@@ -5,6 +5,8 @@ import ListItem from "./ListItem";
 import { useDispatch, useSelector } from "react-redux";
 import PexelsLogo from "./PexelsLogo";
 import { curatedPhoto } from "../redux/reducer/curated";
+import { searchPhoto } from "../redux/reducer/search";
+import { useParams } from "react-router-dom";
 
 const Wrap = styled.div`
   width: 70%;
@@ -20,29 +22,28 @@ const Ul = styled.ul`
 `;
 
 const ListWrap = () => {
-  const [curatedPhotos, setCuratedPhotos] = useState([]);
-  const [searchPhotos, setSearchPhotos] = useState([]);
+  const [photos, setPhotos] = useState([]);
+  const param = useParams();
   const dispatch = useDispatch();
   const curated = useSelector((state) => state.curated);
   const search = useSelector((state) => state.search);
 
   useEffect(() => {
-    dispatch(curatedPhoto());
-    setCuratedPhotos(curated);
-  }, [curated]);
-
-  useEffect(() => {
-    setSearchPhotos(search);
-  }, [search]);
+    if (param.query !== undefined) {
+      dispatch(searchPhoto(param.query));
+      const [data, prevPage, nextPage] = search;
+      setPhotos(data);
+    } else {
+      dispatch(curatedPhoto());
+      setPhotos(curated);
+    }
+  }, [param, curated, search]);
 
   return (
     <Wrap>
       <Ul>
-        {search.length > 0
-          ? searchPhotos.map((photo) => <ListItem key={photo.alt} {...photo} />)
-          : curatedPhotos.map((photo) => (
-              <ListItem key={photo.id} {...photo} />
-            ))}
+        {photos &&
+          photos.map((photo) => <ListItem key={photo.alt} {...photo} />)}
       </Ul>
       <PexelsLogo />
     </Wrap>
